@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 from app.config import Config
 import jinja2
 from app.tweets import tweets
@@ -34,4 +34,5 @@ def new():
             "likes": 0,
         }
         tweets.append(newTweet)
+        return redirect("/feed")
     return render_template('new.html', form=form)
